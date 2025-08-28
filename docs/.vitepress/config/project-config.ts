@@ -9,13 +9,13 @@
  * Modify values below to customize your VitePress site
  */
 export const projectConfig: ProjectConfig = {
-    name: "vitepress-M1hono-template",
+    name: "M1hono's VitePress Template",
 
     /**
      * IMPORTANT: Change this to your repository name for GitHub Pages deployment
      * Format: "/your-repo-name/"
      */
-    base: "/M1honoVitepressTemplate/",
+    base: "/TemplateDoc/",
 
     keyWords: ["VitePress", "template", "documentation", "wiki", "markdown"],
     version: "1.0.0",
@@ -39,9 +39,9 @@ export const projectConfig: ProjectConfig = {
     },
     repository: {
         type: "git",
-        url: "https://github.com/M1hono/M1honoVitepressTemplate",
+        url: "https://github.com/M1hono/TemplateDoc",
     },
-    homepage: "https://m1hono.github.io/M1honoVitepressTemplate/",
+    homepage: "https://m1hono.github.io/TemplateDoc/",
 
     defaultCurrency: "CNY",
 
@@ -145,7 +145,7 @@ export const projectConfig: ProjectConfig = {
     headerSocialLinks: [
         {
             icon: "github",
-            link: "https://github.com/M1hono/M1honoVitepressTemplate",
+            link: "https://github.com/M1hono/TemplateDoc",
             ariaLabel: "GitHub Repository",
         },
     ],
@@ -155,7 +155,7 @@ export const projectConfig: ProjectConfig = {
      */
     editLink: {
         pattern:
-            "https://github.com/M1hono/M1honoVitepressTemplate/edit/main/docs/src/:path",
+            "https://github.com/M1hono/TemplateDoc/edit/main/docs/src/:path",
         text: "Edit this page on GitHub",
     },
 
@@ -576,7 +576,7 @@ export interface ProjectConfig {
         /** Enable Draw.io diagram support in markdown */
         drawio: boolean;
             /** Enable Markmap diagram support in markdown */
-    markmap: boolean;
+        markmap: boolean;
         /** Enable multi-language support and language switcher */
         multilingual: boolean;
         /** Enable automatic sidebar generation from file structure */
