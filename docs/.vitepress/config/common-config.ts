@@ -128,6 +128,15 @@ export const commonConfig: UserConfig<DefaultTheme.Config> = {
                     ),
                 },
                 {
+                    find: /^.*\/VPNavScreenTranslations\.vue$/,
+                    replacement: fileURLToPath(
+                        new URL(
+                            "../theme/components/VPNavScreenTranslations.vue",
+                            import.meta.url
+                        )
+                    ),
+                },
+                {
                     find: /^.*\/VPNavBarTranslations\.vue$/,
                     replacement: fileURLToPath(
                         new URL(
