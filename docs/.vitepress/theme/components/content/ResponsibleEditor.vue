@@ -1,4 +1,5 @@
 <script setup lang="ts">
+    //@ts-nocheck
     import { useData } from "vitepress";
     import { computed } from "vue";
     import { useSafeI18n } from "@utils/i18n/locale";
