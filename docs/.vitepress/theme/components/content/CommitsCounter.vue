@@ -68,38 +68,28 @@
         };
     };
 
-    const { owner: defaultOwner, repo: defaultRepo } = getRepoInfo();
+    interface Props {
+        username?: string;
+        repoName?: string;
+        daysToFetch?: number;
+        height?: number;
+        lineWidth?: number;
+        fill?: boolean;
+        smooth?: boolean;
+    }
 
-    const props = defineProps({
-        username: {
-            type: String,
-            default: defaultOwner,
-        },
-        repoName: {
-            type: String,
-            default: defaultRepo,
-        },
-        daysToFetch: {
-            type: Number,
-            default: 30,
-        },
-        height: {
-            type: Number,
-            default: 120,
-        },
-        lineWidth: {
-            type: Number,
-            default: 4,
-        },
-        fill: {
-            type: Boolean,
-            default: true,
-        },
-        smooth: {
-            type: Boolean,
-            default: true,
-        },
+    const { owner: defaultUsername, repo: defaultRepoName } = getRepoInfo();
+
+    const props = withDefaults(defineProps<Props>(), {
+        daysToFetch: 30,
+        height: 120,
+        lineWidth: 4,
+        fill: true,
+        smooth: true,
     });
+
+    const username = computed(() => props.username ?? defaultUsername);
+    const repoName = computed(() => props.repoName ?? defaultRepoName);
 
     const { isDark, lang } = useData();
 
@@ -297,8 +287,8 @@
     const fetchContributions = async () => {
         try {
             const commits = await utils.charts.github.githubApi.fetchAllCommits(
-                props.username,
-                props.repoName
+                username.value,
+                repoName.value
             );
 
             contributions.value =
