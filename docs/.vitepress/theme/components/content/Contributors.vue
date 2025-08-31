@@ -55,12 +55,13 @@
     const { owner: defaultOwner, repo: defaultRepo } = getRepoInfo();
 
     const props = withDefaults(defineProps<Props>(), {
-        owner: defaultOwner,
-        repo: defaultRepo,
         maxCount: 200,
         showContributions: true,
         enableCache: true,
     });
+
+    const owner = computed(() => props.owner ?? defaultOwner);
+    const repo = computed(() => props.repo ?? defaultRepo);
 
     const { site } = useData();
 
@@ -77,13 +78,13 @@
 
     const ownerContributor = computed(() =>
         sortedContributors.value.find(
-            (c) => c.login.toLowerCase() === props.owner.toLowerCase()
+            (c) => c.login.toLowerCase() === owner.value.toLowerCase()
         )
     );
 
     const regularContributors = computed(() =>
         sortedContributors.value.filter(
-            (c) => c.login.toLowerCase() !== props.owner.toLowerCase()
+            (c) => c.login.toLowerCase() !== owner.value.toLowerCase()
         )
     );
 
@@ -197,7 +198,7 @@
 
         try {
             const response = await fetch(
-                `https://api.github.com/repos/${props.owner}/${props.repo}/contributors?per_page=100`,
+                `https://api.github.com/repos/${owner.value}/${repo.value}/contributors?per_page=100`,
                 {
                     headers: {
                         Accept: "application/vnd.github.v3+json",
