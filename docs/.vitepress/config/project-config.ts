@@ -9,7 +9,7 @@
  * Modify values below to customize your VitePress site
  */
 export const projectConfig: ProjectConfig = {
-    name: "M1hono's VitePress Template",
+    name: "TemplateDoc",
 
     /**
      * IMPORTANT: Change this to your repository name for GitHub Pages deployment

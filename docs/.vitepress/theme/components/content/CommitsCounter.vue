@@ -28,6 +28,7 @@
     import { defineAsyncComponent } from "vue";
     import utils from "@utils";
     import { useSafeI18n } from "@utils/i18n/locale";
+    import { getProjectInfo } from "../../../config/project-config";
 
     // Async import for vue-echarts to avoid SSR issues
     const VChart = defineAsyncComponent(async () => {
@@ -50,14 +51,32 @@
         commitsOnDate: "{count} commits on {date}"
     });
 
+    const projectInfo = getProjectInfo();
+    
+    const getRepoInfo = () => {
+        const repoUrl = projectInfo.repository.url;
+        const match = repoUrl.match(
+            /github\.com\/([^\/]+)\/([^\/]+?)(?:\.git)?$/
+        );
+        if (match) {
+            return { owner: match[1], repo: match[2] };
+        }
+        return {
+            owner: projectInfo.author,
+            repo: projectInfo.name,
+        };
+    };
+
+    const { owner: defaultOwner, repo: defaultRepo } = getRepoInfo();
+
     const props = defineProps({
         username: {
             type: String,
-            default: "PickAID",
+            default: defaultOwner,
         },
         repoName: {
             type: String,
-            default: "CrychicDoc",
+            default: defaultRepo,
         },
         daysToFetch: {
             type: Number,
@@ -116,7 +135,7 @@
                                 60 *
                                 60 *
                                 1000
-                    ).toLocaleDateString("zh-CN", {
+                    ).toLocaleDateString(lang.value, {
                         month: "short",
                         day: "numeric",
                     })

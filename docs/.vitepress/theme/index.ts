@@ -17,6 +17,8 @@ import {
 } from "@nolebase/vitepress-plugin-enhanced-readabilities/client";
 import { NolebaseInlineLinkPreviewPlugin } from "@nolebase/vitepress-plugin-inline-link-preview/client";
 import { NolebaseGitChangelogPlugin } from "@nolebase/vitepress-plugin-git-changelog/client";
+import { NolebaseHighlightTargetedHeading } from "@nolebase/vitepress-plugin-highlight-targeted-heading/client";
+import "@nolebase/vitepress-plugin-highlight-targeted-heading/client/style.css";
 import mdVar from "vitepress-md-var";
 
 import Layout from "./Layout.vue";
