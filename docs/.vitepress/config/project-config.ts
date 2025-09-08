@@ -204,9 +204,9 @@ export const projectConfig: ProjectConfig = {
         showIcp: false,
         showPolice: false,
         showLicense: true,
-        licenseText: "CC BY-SA 4.0",
-        licenseLink: "https://creativecommons.org/licenses/by-sa/4.0/",
-        showSiteStats: false,
+        licenseText: "MIT",
+        licenseLink: "https://opensource.org/licenses/MIT",
+        showSiteStats: true,
         siteStatsProvider: "busuanzi",
     },
 
